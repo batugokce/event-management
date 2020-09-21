@@ -1,0 +1,337 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.0.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+    <changeSet author="Batuhan (generated)" id="1600348411782-1">
+        <createTable tableName="answer">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="answer_pkey"/>
+            </column>
+            <column name="answer1" type="VARCHAR(255)"/>
+            <column name="answer2" type="VARCHAR(255)"/>
+            <column name="answer3" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-2">
+        <createTable tableName="authority_entity">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="authority_entity_pkey"/>
+            </column>
+            <column name="authority" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-3">
+        <createTable tableName="authority">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="authority_pkey"/>
+            </column>
+            <column name="authority" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-4">
+        <createTable tableName="event_person">
+            <column name="event_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="event_person_pkey"/>
+            </column>
+            <column name="person_tc" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="event_person_pkey"/>
+            </column>
+            <column name="created" type="date"/>
+            <column name="is_completed_survey" type="BOOLEAN"/>
+            <column name="answers" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-5">
+        <createTable tableName="event">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="event_pkey"/>
+            </column>
+            <column name="capacity" type="INTEGER"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="end_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="event_name" type="VARCHAR(255)"/>
+            <column name="has_question" type="BOOLEAN"/>
+            <column name="is_full" type="BOOLEAN"/>
+            <column name="latitude" type="VARCHAR(255)"/>
+            <column name="longitude" type="VARCHAR(255)"/>
+            <column name="person_count" type="INTEGER"/>
+            <column name="start_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="question_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-6">
+        <createTable tableName="question">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="question_pkey"/>
+            </column>
+            <column name="counter" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="q1" type="VARCHAR(255)"/>
+            <column name="q2" type="VARCHAR(255)"/>
+            <column name="q3" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-7">
+        <createTable tableName="user_authorities">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_authorities_pkey"/>
+            </column>
+            <column name="authority_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_authorities_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-8">
+        <createTable tableName="person">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="person_pkey"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="firebase_token" type="VARCHAR(255)"/>
+            <column name="name_surname" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="tc" type="VARCHAR(255)"/>
+            <column name="username" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-9">
+        <createTable tableName="person_question">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="person_question_pkey"/>
+            </column>
+            <column name="answer" type="VARCHAR(255)"/>
+            <column name="question" type="VARCHAR(255)"/>
+            <column name="owner_attending_event_id" type="BIGINT"/>
+            <column name="owner_attending_person_tc" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-10">
+        <createTable tableName="survey_results">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="survey_results_pkey"/>
+            </column>
+            <column name="question1" type="INTEGER"/>
+            <column name="question2" type="INTEGER"/>
+            <column name="question3" type="INTEGER"/>
+            <column name="question4" type="INTEGER"/>
+            <column name="question5" type="INTEGER"/>
+            <column name="question6" type="INTEGER"/>
+            <column name="question7" type="INTEGER"/>
+            <column name="owner_event_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-11">
+        <addForeignKeyConstraint baseColumnNames="answers" baseTableName="event_person" constraintName="fk26kbl4goj73tavl3vt6hy391p" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="answer" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-12">
+        <addForeignKeyConstraint baseColumnNames="authority_id" baseTableName="user_authorities" constraintName="fk2n9bab2v62l3y2jgu3qup4etw" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="authority" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-13">
+        <addForeignKeyConstraint baseColumnNames="owner_attending_event_id,owner_attending_person_tc" baseTableName="person_question" constraintName="fk75taho3f7oep9x5rpgnt8t88g" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="event_id,person_tc" referencedTableName="event_person" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-14">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="event_person" constraintName="fkpmqgfnq8lnm52ofkr4s7lo9me" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="event" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-15">
+        <addForeignKeyConstraint baseColumnNames="owner_event_id" baseTableName="survey_results" constraintName="fkqac7j5crl48hnybnu7ly4c5xo" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="event" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-16">
+        <addUniqueConstraint columnNames="tc" constraintName="uk_glvmqn2hrvqlbrt1s1grp4d6l" tableName="person"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-17">
+        <addUniqueConstraint columnNames="username" constraintName="uk_n0i6d7rc1hqkjivk494g8j2qd" tableName="person"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-18">
+        <addForeignKeyConstraint baseColumnNames="person_tc" baseTableName="event_person" constraintName="fk5f914vpclxkupgme0ed6ul1l2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="tc" referencedTableName="person" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-19">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="event" constraintName="fk1l64phkx61g4ccjtvfdexxg2w" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="question" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-20">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_authorities" constraintName="fk7lpjp8pfawb8a4rkrs7m6kiyb" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="person" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-21">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807" minValue="1" sequenceName="answer_seq" startValue="1"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-22">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807" minValue="1" sequenceName="auth_seq" startValue="1"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-23">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807" minValue="1" sequenceName="event_seq" startValue="1"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-24">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807" minValue="1" sequenceName="idgen" startValue="1"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-25">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807" minValue="1" sequenceName="question_seq" startValue="1"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600348411782-26">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807" minValue="1" sequenceName="user_question_seq" startValue="1"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-1">
+        <createTable tableName="answer">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="answer_pkey"/>
+            </column>
+            <column name="answer1" type="VARCHAR(255)"/>
+            <column name="answer2" type="VARCHAR(255)"/>
+            <column name="answer3" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-2">
+        <createTable tableName="authority_entity">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="authority_entity_pkey"/>
+            </column>
+            <column name="authority" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-3">
+        <createTable tableName="authority">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="authority_pkey"/>
+            </column>
+            <column name="authority" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-4">
+        <createTable tableName="event_person">
+            <column name="event_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="event_person_pkey"/>
+            </column>
+            <column name="person_tc" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="event_person_pkey"/>
+            </column>
+            <column name="created" type="date"/>
+            <column name="is_completed_survey" type="BOOLEAN"/>
+            <column name="answers" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-5">
+        <createTable tableName="event">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="event_pkey"/>
+            </column>
+            <column name="capacity" type="INTEGER"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="end_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="event_name" type="VARCHAR(255)"/>
+            <column name="has_question" type="BOOLEAN"/>
+            <column name="is_full" type="BOOLEAN"/>
+            <column name="latitude" type="VARCHAR(255)"/>
+            <column name="longitude" type="VARCHAR(255)"/>
+            <column name="person_count" type="INTEGER"/>
+            <column name="start_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="question_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-6">
+        <createTable tableName="question">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="question_pkey"/>
+            </column>
+            <column name="counter" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="q1" type="VARCHAR(255)"/>
+            <column name="q2" type="VARCHAR(255)"/>
+            <column name="q3" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-7">
+        <createTable tableName="user_authorities">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_authorities_pkey"/>
+            </column>
+            <column name="authority_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_authorities_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-8">
+        <createTable tableName="person">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="person_pkey"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="firebase_token" type="VARCHAR(255)"/>
+            <column name="name_surname" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="tc" type="VARCHAR(255)"/>
+            <column name="username" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-9">
+        <createTable tableName="person_question">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="person_question_pkey"/>
+            </column>
+            <column name="answer" type="VARCHAR(255)"/>
+            <column name="question" type="VARCHAR(255)"/>
+            <column name="owner_attending_event_id" type="BIGINT"/>
+            <column name="owner_attending_person_tc" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-10">
+        <createTable tableName="survey_results">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="survey_results_pkey"/>
+            </column>
+            <column name="question1" type="INTEGER"/>
+            <column name="question2" type="INTEGER"/>
+            <column name="question3" type="INTEGER"/>
+            <column name="question4" type="INTEGER"/>
+            <column name="question5" type="INTEGER"/>
+            <column name="question6" type="INTEGER"/>
+            <column name="question7" type="INTEGER"/>
+            <column name="owner_event_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-11">
+        <addForeignKeyConstraint baseColumnNames="answers" baseTableName="event_person" constraintName="fk26kbl4goj73tavl3vt6hy391p" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="answer" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-12">
+        <addForeignKeyConstraint baseColumnNames="authority_id" baseTableName="user_authorities" constraintName="fk2n9bab2v62l3y2jgu3qup4etw" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="authority" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-13">
+        <addForeignKeyConstraint baseColumnNames="owner_attending_event_id,owner_attending_person_tc" baseTableName="person_question" constraintName="fk75taho3f7oep9x5rpgnt8t88g" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="event_id,person_tc" referencedTableName="event_person" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-14">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="event_person" constraintName="fkpmqgfnq8lnm52ofkr4s7lo9me" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="event" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-15">
+        <addForeignKeyConstraint baseColumnNames="owner_event_id" baseTableName="survey_results" constraintName="fkqac7j5crl48hnybnu7ly4c5xo" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="event" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-16">
+        <addUniqueConstraint columnNames="tc" constraintName="uk_glvmqn2hrvqlbrt1s1grp4d6l" tableName="person"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-17">
+        <addUniqueConstraint columnNames="username" constraintName="uk_n0i6d7rc1hqkjivk494g8j2qd" tableName="person"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-18">
+        <addForeignKeyConstraint baseColumnNames="person_tc" baseTableName="event_person" constraintName="fk5f914vpclxkupgme0ed6ul1l2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="tc" referencedTableName="person" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-19">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="event" constraintName="fk1l64phkx61g4ccjtvfdexxg2w" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="question" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-20">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_authorities" constraintName="fk7lpjp8pfawb8a4rkrs7m6kiyb" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="person" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-21">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807" minValue="1" sequenceName="answer_seq" startValue="1"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-22">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807" minValue="1" sequenceName="auth_seq" startValue="1"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-23">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807" minValue="1" sequenceName="event_seq" startValue="1"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-24">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807" minValue="1" sequenceName="idgen" startValue="1"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-25">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807" minValue="1" sequenceName="question_seq" startValue="1"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1600353212142-26">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807" minValue="1" sequenceName="user_question_seq" startValue="1"/>
+    </changeSet>
+</databaseChangeLog>
