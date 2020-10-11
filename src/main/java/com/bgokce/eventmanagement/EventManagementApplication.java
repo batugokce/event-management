@@ -29,12 +29,12 @@ public class EventManagementApplication {
 
 	@PostConstruct
 	private void initialize(){
-		/*Authority authority = authorityRepository.findById(1L).orElse(null);
+		Authority authority = authorityRepository.findById(1L).orElse(null);
 		if (authority == null){
 			authorityRepository.save(new Authority("USER"));
 			authorityRepository.save(new Authority("ADMIN"));
 			personService.createAdmin("admin","admin");
-		}*/
+		}
 	}
 
 }
